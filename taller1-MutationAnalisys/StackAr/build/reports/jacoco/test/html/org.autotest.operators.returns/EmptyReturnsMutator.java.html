@@ -15,49 +15,50 @@ import java.util.List;
  * Por ejemplo, si la función tiene que devolver un String se reemplaza por &quot;&quot;.
  * Si tiene que devolver un int se reemplaza por 0.
  */
-<span class="nc" id="L18">public class EmptyReturnsMutator extends MutationOperator {</span>
+<span class="nc" id="L18">public class</span>
+EmptyReturnsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-<span class="nc bnc" id="L21" title="All 2 branches missed.">        if (!(candidate instanceof CtReturn)) {</span>
-<span class="nc" id="L22">            return false;</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if (!(candidate instanceof CtReturn)) {</span>
+<span class="nc" id="L23">            return false;</span>
         }
 
-<span class="nc" id="L25">        CtReturn op = (CtReturn)candidate;</span>
-<span class="nc" id="L26">        String type = getReturnedExpressionType(op);</span>
-<span class="nc" id="L27">        List&lt;String&gt; targetTypes = Arrays.asList(</span>
+<span class="nc" id="L26">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L27">        String type = getReturnedExpressionType(op);</span>
+<span class="nc" id="L28">        List&lt;String&gt; targetTypes = Arrays.asList(</span>
             &quot;java.lang.String&quot;,
             &quot;int&quot;
         );
-<span class="nc" id="L31">        return targetTypes.contains(type);</span>
+<span class="nc" id="L32">        return targetTypes.contains(type);</span>
     }
 
     @Override
     public void process(CtElement candidate) {
-<span class="nc" id="L36">        CtReturn op = (CtReturn)candidate;</span>
-<span class="nc" id="L37">        op.setReturnedExpression(getEmptyValueForReturnExpression(op));</span>
-<span class="nc" id="L38">    }</span>
+<span class="nc" id="L37">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L38">        op.setReturnedExpression(getEmptyValueForReturnExpression(op));</span>
+<span class="nc" id="L39">    }</span>
 
     private static String getReturnedExpressionType(CtReturn op) {
-<span class="nc" id="L41">        return op.getReturnedExpression().getType().toString();</span>
+<span class="nc" id="L42">        return op.getReturnedExpression().getType().toString();</span>
     }
 
     private CtExpression getEmptyValueForReturnExpression(CtReturn op) {
-<span class="nc" id="L45">        String returnType = getReturnedExpressionType(op);</span>
-<span class="nc bnc" id="L46" title="All 3 branches missed.">        switch (returnType) {</span>
+<span class="nc" id="L46">        String returnType = getReturnedExpressionType(op);</span>
+<span class="nc bnc" id="L47" title="All 3 branches missed.">        switch (returnType) {</span>
             case &quot;java.lang.String&quot;:
-<span class="nc" id="L48">                return op.getFactory().Code().createLiteral(&quot;&quot;);</span>
+<span class="nc" id="L49">                return op.getFactory().Code().createLiteral(&quot;&quot;);</span>
             case &quot;int&quot;:
-<span class="nc" id="L50">                return op.getFactory().Code().createLiteral(0);</span>
+<span class="nc" id="L51">                return op.getFactory().Code().createLiteral(0);</span>
         }
-<span class="nc" id="L52">        return null;</span>
+<span class="nc" id="L53">        return null;</span>
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
-<span class="nc" id="L57">        CtReturn op = (CtReturn)candidate;</span>
-<span class="nc" id="L58">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
-<span class="nc" id="L59">                op.getReturnedExpression().toString() + &quot; por &quot; + getEmptyValueForReturnExpression(op).toString() +</span>
-<span class="nc" id="L60">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
+<span class="nc" id="L58">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L59">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
+<span class="nc" id="L60">                op.getReturnedExpression().toString() + &quot; por &quot; + getEmptyValueForReturnExpression(op).toString() +</span>
+<span class="nc" id="L61">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

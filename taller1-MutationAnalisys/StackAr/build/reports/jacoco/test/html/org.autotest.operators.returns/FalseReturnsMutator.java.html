@@ -16,19 +16,43 @@ import java.util.List;
 <span class="nc" id="L16">public class FalseReturnsMutator extends MutationOperator {</span>
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
-<span class="nc" id="L20">        return false;</span>
+<span class="nc bnc" id="L19" title="All 2 branches missed.">        if (!(candidate instanceof CtReturn)) {</span>
+<span class="nc" id="L20">            return false;</span>
+        }
+
+<span class="nc" id="L23">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L24">        String type = getReturnedExpressionType(op);</span>
+<span class="nc" id="L25">        List&lt;String&gt; targetTypes = Arrays.asList(</span>
+                &quot;boolean&quot;
+        );
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        if  (targetTypes.contains(type)){</span>
+<span class="nc" id="L29">             String value = op.getReturnedExpression().toString();</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">             if (value.equals(&quot;false&quot;)){</span>
+<span class="nc" id="L31">                 return false;</span>
+             }
+<span class="nc" id="L33">             return true;</span>
+        }
+<span class="nc" id="L35">        return  false;</span>
     }
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L40">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L41">        op.setReturnedExpression(op.getFactory().Code().createLiteral(false));</span>
+<span class="nc" id="L42">    }</span>
+
+    private static String getReturnedExpressionType(CtReturn op) {
+<span class="nc" id="L45">        return op.getReturnedExpression().getType().toString();</span>
+    }
+
+
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
-<span class="nc" id="L31">        return null;</span>
+<span class="nc" id="L52">        CtReturn op = (CtReturn)candidate;</span>
+<span class="nc" id="L53">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
+<span class="nc" id="L54">                op.getReturnedExpression().toString() + &quot; por &quot; + &quot;false&quot; +</span>
+<span class="nc" id="L55">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

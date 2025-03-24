@@ -18,19 +18,50 @@ import java.util.List;
 <span class="nc" id="L18">public class NegateConditionsMutator extends MutationOperator {</span>
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
-<span class="nc" id="L22">        return false;</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        if (!(candidate instanceof CtBinaryOperator)) {</span>
+<span class="nc" id="L22">            return false;</span>
+        }
+
+<span class="nc" id="L25">        CtBinaryOperator op = (CtBinaryOperator)candidate;</span>
+<span class="nc" id="L26">        List&lt;BinaryOperatorKind&gt; targetOperations = Arrays.asList(</span>
+                BinaryOperatorKind.EQ, // ==
+                BinaryOperatorKind.NE, // !=
+                BinaryOperatorKind.LE, // &lt;=
+                BinaryOperatorKind.GE, // &gt;=
+                BinaryOperatorKind.LT, // &lt;
+                BinaryOperatorKind.GT // &gt;
+        );
+<span class="nc" id="L34">        return targetOperations.contains(op.getKind());</span>
     }
 
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
-<span class="nc" id="L28">    }</span>
-
+<span class="nc" id="L39">        CtBinaryOperator op = (CtBinaryOperator)candidate;</span>
+<span class="nc" id="L40">        op.setKind(getReplacement(op.getKind()));</span>
+<span class="nc" id="L41">    }</span>
+    public BinaryOperatorKind getReplacement(BinaryOperatorKind kind) {
+<span class="nc bnc" id="L43" title="All 7 branches missed.">        switch (kind) {</span>
+            case EQ:
+<span class="nc" id="L45">                return BinaryOperatorKind.NE;</span>
+            case NE:
+<span class="nc" id="L47">                return BinaryOperatorKind.EQ;</span>
+            case LE:
+<span class="nc" id="L49">                return BinaryOperatorKind.GT;</span>
+            case GE:
+<span class="nc" id="L51">                return BinaryOperatorKind.LT;</span>
+            case LT:
+<span class="nc" id="L53">                return BinaryOperatorKind.GE;</span>
+            case GT:
+<span class="nc" id="L55">                return BinaryOperatorKind.LT;</span>
+        }
+<span class="nc" id="L57">        return null;</span>
+    }
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
-<span class="nc" id="L33">        return null;</span>
+<span class="nc" id="L61">        CtBinaryOperator op = (CtBinaryOperator)candidate;</span>
+<span class="nc" id="L62">        return this.getClass().getSimpleName() + &quot;: Se reemplazó &quot; +</span>
+<span class="nc" id="L63">                BinaryOperatorKindToString.get(op.getKind()) + &quot; por &quot; + BinaryOperatorKindToString.get(getReplacement(op.getKind())) +</span>
+<span class="nc" id="L64">                &quot; en la línea &quot; + op.getPosition().getLine() + &quot;.&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

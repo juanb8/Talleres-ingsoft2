@@ -28,8 +28,8 @@ public class MathMutator extends MutationOperator {
                 BinaryOperatorKind.MUL, // *
                 BinaryOperatorKind.DIV, // /
                 BinaryOperatorKind.MOD, // %
-                BinaryOperatorKind.AND, // $
-                BinaryOperatorKind.OR, // |
+               // BinaryOperatorKind.AND, // $
+               // BinaryOperatorKind.OR, // |
                 BinaryOperatorKind.BITXOR, // ^
                 BinaryOperatorKind.BITOR,  // |
                 BinaryOperatorKind.BITAND, // /
@@ -56,10 +56,10 @@ public class MathMutator extends MutationOperator {
                 return BinaryOperatorKind.MUL;
             case MOD:
                 return BinaryOperatorKind.MUL;
-            case AND:
-                return BinaryOperatorKind.OR;
-            case OR:
-                return BinaryOperatorKind.AND;
+            //case AND:
+             //   return BinaryOperatorKind.OR;
+            //case OR:
+             //   return BinaryOperatorKind.AND;
             case BITAND:
                 return BinaryOperatorKind.BITOR;
             case BITOR:
