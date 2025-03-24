@@ -32,8 +32,10 @@ public class NullReturnsMutator extends MutationOperator {
                 "boolean",
                 "int"
         );
-        return !(targetTypes.contains(type));
-
+        if (targetTypes.contains(type)){
+            return false;
+        }
+        return !(op.getReturnedExpression().toString().equals("null"));
     }
     private static String getReturnedExpressionType(CtReturn op) {
         return op.getReturnedExpression().getType().toString();

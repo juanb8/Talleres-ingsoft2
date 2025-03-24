@@ -1,7 +1,7 @@
 package org.autotest.mutants;
 
 /**
- * MinusOneConstantMutator: Se reemplazó 0 por -1 en la línea 18.
+ * MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 64.
  */
 public class StackArMutated1424 extends org.autotest.Stack {
     private static final int DEFAULT_CAPACITY = 10;
@@ -15,7 +15,7 @@ public class StackArMutated1424 extends org.autotest.Stack {
     }
 
     public StackArMutated1424(int capacity) throws java.lang.IllegalArgumentException {
-        if (capacity < -1) {
+        if (capacity < 0) {
             throw new java.lang.IllegalArgumentException();
         }
         this.elems = new java.lang.Object[capacity];
@@ -61,7 +61,7 @@ public class StackArMutated1424 extends org.autotest.Stack {
     @java.lang.Override
     public int hashCode() {
         final int prime = 31;
-        int result = 1;
+        int result = -1;
         result = (prime * result) + java.util.Arrays.hashCode(elems);
         result = (prime * result) + readIndex;
         return result;
