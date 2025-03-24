@@ -1,10 +1,10 @@
 package org.autotest.mutants;
 
 /**
- * MathMutator: Se reemplazó + por - en la línea 66.
+ * OneConstantMutator: Se reemplazó 10 por 1 en la línea 7.
  */
 public class StackArMutated7016 extends org.autotest.Stack {
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 1;
 
     private final java.lang.Object[] elems;
 
@@ -63,7 +63,7 @@ public class StackArMutated7016 extends org.autotest.Stack {
         final int prime = 31;
         int result = 1;
         result = (prime * result) + java.util.Arrays.hashCode(elems);
-        result = (prime * result) - readIndex;
+        result = (prime * result) + readIndex;
         return result;
     }
 

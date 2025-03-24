@@ -17,11 +17,22 @@ import java.util.List;
 public class NullReturnsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        if(!(candidate instanceof CtReturn)) {
+        if (!(candidate instanceof CtReturn)) {
             return false;
         }
         CtReturn op = (CtReturn) candidate;
-        return  (op.getReturnedExpression() instanceof  CtLiteral);
+        String type = getReturnedExpressionType(op);
+        List<String> targetTypes = Arrays.asList(
+                "byte",
+                "short",
+                "char",
+                "long",
+                "float",
+                "double",
+                "boolean",
+                "int"
+        );
+        return !(targetTypes.contains(type));
 
     }
     private static String getReturnedExpressionType(CtReturn op) {

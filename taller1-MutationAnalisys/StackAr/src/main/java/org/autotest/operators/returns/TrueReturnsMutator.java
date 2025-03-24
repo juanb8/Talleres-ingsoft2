@@ -16,18 +16,34 @@ import java.util.List;
 public class TrueReturnsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        // COMPLETAR
-        return false;
-    }
+        if(!(candidate instanceof CtReturn)){
+            return false;
+        }
+        CtReturn op = (CtReturn) candidate;
+        String type = getReturnedExpressionType(op);
+        List<String> targetTypes = Arrays.asList(
+                "boolean"
+        );
+        return targetTypes.contains(type);
 
+    }
+    private static String getReturnedExpressionType(CtReturn op) {
+        return op.getReturnedExpression().getType().toString();
+    }
     @Override
     public void process(CtElement candidate) {
-        // COMPLETAR
+        CtReturn op = (CtReturn) candidate;
+        op.setReturnedExpression(getTrueValueForReturnExpression(op));
+    }
+    public  CtExpression getTrueValueForReturnExpression(CtReturn op){
+        return op.getFactory().Code().createLiteral(true);
     }
 
     @Override
     public String describeMutation(CtElement candidate) {
-        // COMPLETAR
-        return null;
+        CtReturn op = (CtReturn)candidate;
+        return this.getClass().getSimpleName() + ": Se reemplazó " +
+                op.getReturnedExpression().toString() + " por " + getTrueValueForReturnExpression(op).toString() +
+                " en la línea " + op.getPosition().getLine() + ".";
     }
 }
