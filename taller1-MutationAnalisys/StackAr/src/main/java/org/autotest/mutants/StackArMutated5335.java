@@ -1,7 +1,7 @@
 package org.autotest.mutants;
 
 /**
- * FalseConditionalsMutator: Se reemplazó obj == null por false en la línea 74.
+ * MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 64.
  */
 public class StackArMutated5335 extends org.autotest.Stack {
     private static final int DEFAULT_CAPACITY = 10;
@@ -61,7 +61,7 @@ public class StackArMutated5335 extends org.autotest.Stack {
     @java.lang.Override
     public int hashCode() {
         final int prime = 31;
-        int result = 1;
+        int result = -1;
         result = (prime * result) + java.util.Arrays.hashCode(elems);
         result = (prime * result) + readIndex;
         return result;
@@ -72,7 +72,7 @@ public class StackArMutated5335 extends org.autotest.Stack {
         if (this == obj) {
             return true;
         }
-        if (false) {
+        if (obj == null) {
             return false;
         }
         if (getClass() != obj.getClass()) {

@@ -16,14 +16,18 @@ import spoon.reflect.declaration.CtElement;
 public class TrueConditionalsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        return (candidate instanceof CtIf );
+        if(!(candidate instanceof CtIf)) {
+            return false;
+        }
+        CtIf op = (CtIf) candidate;
+        return !(op.getCondition().toString().equals("true"));
     }
 
     @Override
     public void process(CtElement candidate) {
         CtIf op = (CtIf)candidate;
-        CtLiteral<Boolean> set_to_false = op.getFactory().Code().createLiteral(true);
-        op.setCondition(set_to_false);
+        CtLiteral<Boolean> set_to_true = op.getFactory().Code().createLiteral(true);
+        op.setCondition(set_to_true);
     }
 
     @Override

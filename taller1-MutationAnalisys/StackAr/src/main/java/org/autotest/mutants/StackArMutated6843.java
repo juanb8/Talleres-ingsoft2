@@ -1,10 +1,10 @@
 package org.autotest.mutants;
 
 /**
- * ZeroConstantMutator: Se reemplazó 10 por 0 en la línea 7.
+ * NegateConditionsMutator: Se reemplazó == por != en la línea 72.
  */
 public class StackArMutated6843 extends org.autotest.Stack {
-    private static final int DEFAULT_CAPACITY = 0;
+    private static final int DEFAULT_CAPACITY = 10;
 
     private final java.lang.Object[] elems;
 
@@ -69,7 +69,7 @@ public class StackArMutated6843 extends org.autotest.Stack {
 
     @java.lang.Override
     public boolean equals(java.lang.Object obj) {
-        if (this == obj) {
+        if (this != obj) {
             return true;
         }
         if (obj == null) {

@@ -13,7 +13,11 @@ import spoon.reflect.declaration.CtElement;
 public class FalseConditionalsMutator extends MutationOperator {
     @Override
     public boolean isToBeProcessed(CtElement candidate) {
-        return (candidate instanceof CtIf );
+        if (!(candidate instanceof  CtIf)){
+            return false;
+        }
+        CtIf op = (CtIf) candidate;
+        return !(op.getCondition().toString().equals("false"));
     }
 
     @Override

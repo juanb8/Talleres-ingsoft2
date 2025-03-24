@@ -52,7 +52,7 @@ public class NegateConditionsMutator extends MutationOperator {
             case LT:
                 return BinaryOperatorKind.GE;
             case GT:
-                return BinaryOperatorKind.LT;
+                return BinaryOperatorKind.LE;
         }
         return null;
     }
