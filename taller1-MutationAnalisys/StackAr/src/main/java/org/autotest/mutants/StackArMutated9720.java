@@ -1,7 +1,7 @@
 package org.autotest.mutants;
 
 /**
- * MinusOneConstantMutator: Se reemplazó 1 por -1 en la línea 64.
+ * NullReturnsMutator: Se reemplazó b.toString() por null en la línea 99.
  */
 public class StackArMutated9720 extends org.autotest.Stack {
     private static final int DEFAULT_CAPACITY = 10;
@@ -61,7 +61,7 @@ public class StackArMutated9720 extends org.autotest.Stack {
     @java.lang.Override
     public int hashCode() {
         final int prime = 31;
-        int result = -1;
+        int result = 1;
         result = (prime * result) + java.util.Arrays.hashCode(elems);
         result = (prime * result) + readIndex;
         return result;
@@ -101,6 +101,6 @@ public class StackArMutated9720 extends org.autotest.Stack {
             b.append(s);
         }
         b.append("]");
-        return b.toString();
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package org.autotest.operators.unary;
 
+import org.autotest.helpers.BinaryOperatorKindToString;
 import org.autotest.helpers.UnaryOperatorKindToString;
 import org.autotest.operators.MutationOperator;
 import spoon.reflect.code.*;
@@ -50,9 +51,9 @@ public class IncrementsMutator extends MutationOperator {
 
     @Override
     public String describeMutation(CtElement candidate) {
-        CtUnaryOperator op = (CtUnaryOperator)candidate;
+        CtUnaryOperator op = (CtUnaryOperator) candidate;
         return this.getClass().getSimpleName() + ": Se reemplazó " +
-                UnaryOperatorKindToString op.getKind().toString() + " por " + getReplacement(op.getKind()).toString() +
+                UnaryOperatorKindToString.get(op.getKind()) + " por " + UnaryOperatorKindToString.get(getReplacement(op.getKind())) +
                 " en la línea " + op.getPosition().getLine() + ".";
     }
 
