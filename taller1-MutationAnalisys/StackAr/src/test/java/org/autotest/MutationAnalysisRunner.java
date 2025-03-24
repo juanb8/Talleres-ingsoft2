@@ -198,6 +198,9 @@ public abstract class MutationAnalysisRunner {
 
         long mutationScore = (killedMutants * 100) / mutantsResult.size();
         System.out.println("-> Mutation score: " + mutationScore + "%");
+       // System.out.println("Mutantes totales: "+mutantsResult.size() );
+       // System.out.println("Mutantes matados: "+ killedMutants );
+
     }
 
     /**

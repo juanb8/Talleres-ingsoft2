@@ -5,6 +5,7 @@ import spoon.reflect.code.CtExpression;
 import spoon.reflect.code.CtLiteral;
 import spoon.reflect.code.CtReturn;
 import spoon.reflect.declaration.CtElement;
+import spoon.reflect.declaration.CtTypeInformation;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ public class NullReturnsMutator extends MutationOperator {
             return false;
         }
         CtReturn op = (CtReturn) candidate;
+
         String type = getReturnedExpressionType(op);
         List<String> targetTypes = Arrays.asList(
                 "byte",
@@ -36,7 +38,10 @@ public class NullReturnsMutator extends MutationOperator {
             return false;
         }
         return !(op.getReturnedExpression().toString().equals("null"));
+
+
     }
+
     private static String getReturnedExpressionType(CtReturn op) {
         return op.getReturnedExpression().getType().toString();
     }

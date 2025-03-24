@@ -60,5 +60,31 @@ public class StackTests3 extends MutationAnalysisRunner {
         assertEquals("[42,43]", stack.toString());
     }
 
-    // COMPLETAR
+    public void  testEqualsMethod() throws Exception {
+        Stack stack1 = createStack(2);
+        Stack stack2 = createStack(2);
+        stack1 .push(42);
+        assertEquals(stack1, stack1);
+        stack2 .push(42);
+        assertEquals(stack1, stack2);
+        stack1 .push(43);
+        stack2.push(44);
+        assertNotEquals(stack1, stack2);
+    }
+  // TODO:  public void testHashCodeMethod() throws Exception {}
+    public void testTopMethod() throws Exception {
+        Stack stack = createStack();
+        assertThrows(IllegalStateException.class, () -> {
+            stack.top();
+        });
+        stack.push(42);
+        assertEquals(42, stack.top());
+    }
+    // Esta es equivalente?
+    public void testConstructorWithCapacity1() throws Exception {
+        Stack stack = createStack(1);
+    }
+    public void testConstructorWithCapacity0() throws Exception {
+        Stack stack = createStack(0);
+    }
 }

@@ -51,8 +51,8 @@ public class StackAr extends Stack {
 	}
 
 	public Object top() throws IllegalStateException {
-<span class="pc bpc" id="L54" title="1 of 2 branches missed.">		if (isEmpty()) {</span>
-<span class="nc" id="L55">			throw new IllegalStateException();</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">		if (isEmpty()) {</span>
+<span class="fc" id="L55">			throw new IllegalStateException();</span>
 		}
 <span class="fc" id="L57">		Object rv = this.elems[readIndex];</span>
 <span class="fc" id="L58">		return rv;</span>
@@ -69,18 +69,18 @@ public class StackAr extends Stack {
 
 	@Override
 	public boolean equals(Object obj) {
-<span class="nc bnc" id="L72" title="All 2 branches missed.">		if (this == obj)</span>
-<span class="nc" id="L73">			return true;</span>
-<span class="nc bnc" id="L74" title="All 2 branches missed.">		if (obj == null)</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">		if (this == obj)</span>
+<span class="fc" id="L73">			return true;</span>
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">		if (obj == null)</span>
 <span class="nc" id="L75">			return false;</span>
-<span class="nc bnc" id="L76" title="All 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">		if (getClass() != obj.getClass())</span>
 <span class="nc" id="L77">			return false;</span>
-<span class="nc" id="L78">		StackAr other = (StackAr) obj;</span>
-<span class="nc bnc" id="L79" title="All 2 branches missed.">		if (!Arrays.equals(elems, other.elems))</span>
-<span class="nc" id="L80">			return false;</span>
-<span class="nc bnc" id="L81" title="All 2 branches missed.">		if (readIndex != other.readIndex)</span>
+<span class="fc" id="L78">		StackAr other = (StackAr) obj;</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">		if (!Arrays.equals(elems, other.elems))</span>
+<span class="fc" id="L80">			return false;</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">		if (readIndex != other.readIndex)</span>
 <span class="nc" id="L82">			return false;</span>
-<span class="nc" id="L83">		return true;</span>
+<span class="fc" id="L83">		return true;</span>
 	}
 
 	@Override

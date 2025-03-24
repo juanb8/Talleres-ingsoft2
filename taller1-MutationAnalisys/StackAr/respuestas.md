@@ -8,13 +8,19 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 ## Ejercicio 1: Resultados de generación de mutantes
 
 1. ¿Cuántos mutantes se generaron en total?
-   - Respuesta:
+   - Respuesta: 75. 
 
 2. ¿Qué operador de mutación generó más mutantes? ¿Cuántos y por qué?
    - Respuesta:
+	   - TrueConditionalsMutator y FalseConditionalMutator.
+	   - 10.
+	   - Porque las estructuras condicionales son más comunes.   
 
 3. ¿Qué operador de mutación generó menos mutantes? ¿Cuántos y por qué?
    - Respuesta:
+	   - ConditionalBoundaryMutator, NullReturnsMutator, IncrementsMutator, EmptyReturnsMutator
+	   - 3.
+	   - Por que son condiciones específicas y poco comunes. 
 
 ---
 
@@ -22,15 +28,15 @@ Completar este documento con las respuestas correspondientes a los ejercicios pl
 
 1. ¿Cuántos mutantes vivos y muertos encontraron cada uno de los test suites?
    - **StackTests1**:
-     - Mutantes vivos:
-     - Mutantes muertos:
+     - Mutantes vivos: 56
+     - Mutantes muertos: 19 
    - **StackTests2**:
-     - Mutantes vivos:
-     - Mutantes muertos:
+     - Mutantes vivos: 38
+     - Mutantes muertos: 37
 
 2. ¿Cuál es el mutation score de cada test suite?
-   - **StackTests1**:
-   - **StackTests2**:
+   - **StackTests1**: 25%
+   - **StackTests2**: 49%
 
 ---
 
